@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { createServer as createViteServer } from 'vite';
 import { initDb } from './src/server/db.js';
+import { initCronJobs } from './src/server/cron.js';
 import apiRoutes from './src/server/routes.js';
 
 async function startServer() {
@@ -10,6 +11,9 @@ async function startServer() {
 
   // Initialize DB
   initDb();
+  
+  // Initialize Cron Jobs
+  initCronJobs();
 
   app.use(cors());
   app.use(express.json());

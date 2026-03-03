@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { LayoutDashboard, FileText, Settings, LogOut, Bell } from 'lucide-react';
+import { LayoutDashboard, FileText, Settings, LogOut, Bell, ShieldAlert } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -19,6 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   ];
 
   if (user?.role === 'Admin') {
+    navigation.push({ name: 'Audit Logs', href: '/audit-logs', icon: ShieldAlert });
     navigation.push({ name: 'Settings', href: '/settings', icon: Settings });
   }
 
